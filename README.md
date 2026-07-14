@@ -180,8 +180,8 @@ The full schema with seed data is provided in [`database/ecommerce_db.sql`](data
 **Sharan Yadav**
 B.Tech, Computer Science Engineering
 
-- GitHub: _add your profile link_
-- LinkedIn: _add your profile link_
+- GitHub: _https://github.com/Sharanyadav006_
+- LinkedIn: _https://www.linkedin.com/in/srisharan-yadav-439501389?utm_source=share_via&utm_content=profile&utm_medium=member_android_
 
 ## License
 
