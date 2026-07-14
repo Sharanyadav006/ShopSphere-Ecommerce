@@ -1,0 +1,25 @@
+# XAMPP
+xampp/
+
+# Logs
+*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/
+
+# Temporary files
+*.tmp
+
+# Environment files
+.env
+.env.local
+
+# Composer dependencies (only if you use Composer later)
+vendor/
+
+# Node modules (only if you use Node.js later)
+node_modules/
