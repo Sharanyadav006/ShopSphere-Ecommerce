@@ -1,211 +1,141 @@
 # 🛒 ShopSphere — PHP E-Commerce Platform
 
-A full-stack e-commerce web application with a complete shopping experience for customers and a full-featured management dashboard for admins.
+A full-stack e-commerce web application built with **PHP**, **MySQL**, **Bootstrap**, and **JavaScript**. ShopSphere delivers a complete online shopping experience — product browsing, cart, wishlist, checkout, and order tracking on the customer side, paired with a dedicated admin panel for managing products, categories, and orders.
 
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [Overview](#-overview)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Architecture](#-architecture)
-- [Folder Structure](#-folder-structure)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Screenshots](#-screenshots)
-- [Results](#-results)
-- [Future Improvements](#-future-improvements)
-- [Learning Outcomes](#-learning-outcomes)
-- [Contributors](#-contributors)
-- [License](#-license)
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Database Schema](#database-schema)
+- [Getting Started](#getting-started)
+- [Default Admin Login](#default-admin-login)
+- [Screenshots](#screenshots)
+- [Roadmap](#roadmap)
+- [Author](#author)
+- [License](#license)
 
 ---
 
-## 📖 Overview
+## Overview
 
-**ShopSphere** is a full-stack e-commerce website built with **PHP**, **MySQL**, **Bootstrap**, and **JavaScript**. It provides an end-to-end online shopping experience — from browsing and searching products to checkout, order tracking, and invoicing — alongside a secure admin panel for managing products, categories, and orders.
+ShopSphere is a self-contained e-commerce web app built with core PHP and MySQL — no frameworks required. It's designed to demonstrate a real-world shopping flow end-to-end: user registration and authentication, product discovery, cart and wishlist management, checkout with cash-on-delivery, order history with invoices, and a separate admin dashboard for store management.
 
----
+## Features
 
-## ✨ Features
+### 👤 Customer
 
-### 👤 User Features
+- Registration and login with secure password hashing
+- Product browsing with search, category filters, and price sorting
+- Detailed product pages with reviews and ratings
+- Shopping cart with quantity updates
+- Wishlist
+- Checkout with shipping address and Cash on Delivery (COD)
+- Order history with viewable invoices
+- Profile management
+- Responsive, mobile-friendly UI
 
-| Feature | Description |
-|---|---|
-| 🔐 Authentication | User registration & login with secure password hashing |
-| 🛍️ Product Browsing | Browse, search, filter by category, and sort by price |
-| 📄 Product Details | Dedicated product detail pages with reviews & ratings |
-| 🛒 Shopping Cart | Add, update, and remove items from the cart |
-| 💖 Wishlist | Save products for later |
-| 🏠 Shipping Address | Manage delivery address at checkout |
-| 💵 Cash on Delivery | Place orders with COD payment |
-| 📦 Order Management | View "My Orders" and track order status |
-| 🧾 Invoicing | Generate order invoices |
-| 👤 Profile Management | Update personal profile information |
-| ⭐ Reviews & Ratings | Rate and review purchased products |
-| 📱 Responsive Design | Fully responsive across devices |
+### 🔑 Admin
 
-### 🔑 Admin Features
+- Secure, separate admin login
+- Dashboard with store statistics
+- Product management (add / edit / delete)
+- Category management
+- Order management with status updates
+- Customer order visibility
 
-<details>
-<summary><b>Click to expand admin capabilities</b></summary>
+## Tech Stack
 
-- Secure admin login
-- Analytics dashboard with key statistics
-- Add, edit, and delete products
-- Manage product categories
-- View and manage all customer orders
-- Update order status
-- Full CRUD control over the product catalog
+| Layer      | Technology                          |
+|------------|--------------------------------------|
+| Frontend   | HTML5, CSS3, Bootstrap 5, JavaScript |
+| Backend    | PHP 8 (procedural, `mysqli`)         |
+| Database   | MySQL / MariaDB                      |
+| Tooling    | XAMPP, phpMyAdmin, Git               |
 
-</details>
-
----
-
-## 🛠️ Tech Stack
-
-<table>
-<tr>
-<td valign="top" width="25%">
-
-**Frontend**
-- HTML5
-- CSS3
-- Bootstrap 5
-- JavaScript
-
-</td>
-<td valign="top" width="25%">
-
-**Backend**
-- PHP 8
-
-</td>
-<td valign="top" width="25%">
-
-**Database**
-- MySQL
-
-</td>
-<td valign="top" width="25%">
-
-**Tools**
-- XAMPP
-- phpMyAdmin
-- Git & GitHub
-
-</td>
-</tr>
-</table>
-
----
-
-## 🏗️ Architecture
-
-ShopSphere follows a classic **LAMP-style, procedural PHP architecture**, with shared UI components and centralized database access:
+## Project Structure
 
 ```
-┌──────────────┐      ┌───────────────┐      ┌──────────────┐
-│   Browser    │ ───▶ │  Apache + PHP │ ───▶ │  MySQL DB    │
-│ (HTML/CSS/JS)│ ◀─── │  (ShopSphere) │ ◀─── │ ecommerce_db │
-└──────────────┘      └───────────────┘      └──────────────┘
-        │                     │
-        │                     ├── includes/  → shared header, navbar, footer, helper functions
-        │                     ├── config/    → database connection (db.php)
-        │                     ├── admin/     → admin-only pages & controllers
-        │                     └── uploads/   → uploaded product images
-        │
-        └── Responsive UI rendered with Bootstrap 5 & custom CSS/JS
-```
-
-- **Presentation layer:** PHP-rendered pages using shared `includes/header.php`, `includes/navbar.php`, and `includes/footer.php` for consistent layout.
-- **Application logic:** Individual PHP scripts per feature (cart, wishlist, checkout, orders, etc.), with reusable helpers in `includes/functions.php`.
-- **Data layer:** A single MySQL connection (`config/db.php`) shared across the app, backed by the `ecommerce_db` schema.
-- **Admin module:** A self-contained `admin/` directory with its own authentication, dashboard, and order/product management pages.
-
----
-
-## 📂 Folder Structure
-
-```
-ShopSphere-Ecommerce-main/
-│
-├── admin/                     # Admin panel
-│   ├── add-product.php
-│   ├── dashboard.php
+ShopSphere-Ecommerce/
+├── admin/                  # Admin panel (dashboard, product & order management)
 │   ├── login.php
-│   ├── logout.php
-│   ├── order_details.php
+│   ├── dashboard.php
+│   ├── add-product.php
 │   ├── orders.php
-│   └── update-order-status.php
-│
+│   ├── order_details.php
+│   ├── update-order-status.php
+│   └── logout.php
 ├── config/
-│   └── db.php                 # Database connection config
-│
+│   └── db.php               # Database connection settings
 ├── database/
-│   └── ecommerce_db.sql       # SQL schema/import file
-│
-├── includes/                  # Shared components
+│   └── ecommerce_db.sql     # Full schema + seed data
+├── includes/                # Shared layout partials
 │   ├── header.php
 │   ├── navbar.php
 │   ├── footer.php
 │   └── functions.php
-│
-├── screenshots/                # Project screenshots (for this README)
-├── uploads/                     # Uploaded product images
-│
-├── index.php
-├── login.php
-├── register.php
-├── products.php
-├── product-details.php
-├── cart.php
-├── wishlist.php
-├── checkout.php
-├── payment.php
+├── uploads/                  # Product images
+├── screenshots/              # App screenshots used in this README
+├── dashboard.php             # User home / dashboard
+├── login.php / register.php
+├── products.php / product-details.php
+├── cart.php / add-to-cart.php / remove-cart.php / update-quantity.php
+├── wishlist.php / add-to-wishlist.php / remove-wishlist.php
+├── checkout.php / payment.php
+├── orders.php / invoice.php
 ├── profile.php
-├── orders.php
-├── invoice.php
-├── add-to-cart.php
-├── add-to-wishlist.php
-├── remove-cart.php
-├── remove-wishlist.php
-├── update-quantity.php
-├── dashboard.php
-└── README.md
+└── logout.php
 ```
 
----
+## Database Schema
 
-## ⚙️ Installation
+The database (`ecommerce_db`) consists of the following tables:
 
-1. **Install [XAMPP](https://www.apachefriends.org/)** (or any Apache + MySQL + PHP stack).
+| Table         | Purpose                                   |
+|---------------|--------------------------------------------|
+| `admins`      | Admin accounts                            |
+| `users`       | Customer accounts                         |
+| `products`    | Product catalog                           |
+| `categories`  | Product categories                        |
+| `cart`        | Items in each user's cart                 |
+| `wishlist`    | Items in each user's wishlist             |
+| `orders`      | Order records                             |
+| `order_items` | Line items per order                      |
+| `reviews`     | Product reviews and ratings               |
 
-2. **Copy the project** into your `htdocs` folder:
+The full schema with seed data is provided in [`database/ecommerce_db.sql`](database/ecommerce_db.sql).
 
+## Getting Started
+
+### Prerequisites
+
+- [XAMPP](https://www.apachefriends.org/) (or any Apache + PHP 8 + MySQL/MariaDB stack)
+- A web browser
+
+### Installation
+
+1. **Clone or download** this repository into your local server's web root:
    ```
-   htdocs/ShopSphere-Ecommerce-main
+   htdocs/shopsphere
    ```
 
-3. **Start services** in the XAMPP control panel:
-   - Apache
-   - MySQL
+2. **Start Apache and MySQL** from the XAMPP control panel.
 
-4. **Open phpMyAdmin** at `http://localhost/phpmyadmin`.
-
-5. **Create a database** named:
-
+3. **Create the database.** Open phpMyAdmin and create a database named:
    ```
    ecommerce_db
    ```
 
-6. **Import the SQL file** from `database/ecommerce_db.sql` into the newly created database.
+4. **Import the schema.** In phpMyAdmin, select the `ecommerce_db` database and import:
+   ```
+   database/ecommerce_db.sql
+   ```
 
-7. **Configure the database connection** (if needed) in `config/db.php`:
-
+5. **Configure the database connection**, if needed, in [`config/db.php`](config/db.php):
    ```php
    $host     = "localhost";
    $username = "root";
@@ -213,88 +143,63 @@ ShopSphere-Ecommerce-main/
    $database = "ecommerce_db";
    ```
 
-8. **Launch the app** in your browser:
-
+6. **Launch the app** in your browser:
    ```
-   http://localhost/ShopSphere-Ecommerce-main
+   http://localhost/shopsphere
+   ```
+   Admin panel:
+   ```
+   http://localhost/shopsphere/admin/login.php
    ```
 
----
+## Default Admin Login
 
-## 🚀 Usage
+A seed admin account is included in the SQL dump:
 
-- **As a customer:** Register an account, browse or search products, filter by category, add items to your cart or wishlist, check out with a shipping address using Cash on Delivery, and track your orders with downloadable invoices.
-- **As an admin:** Log in through the admin panel to view dashboard statistics, manage the product catalog (add/edit/delete), organize categories, and process customer orders by updating their status.
+```
+Email: admin@gmail.com
+```
 
----
+The password is hashed in the seed data — set your own by inserting a new row into `admins` with a `password_hash()`-generated value, or update the existing row via phpMyAdmin.
 
-## 🖼️ Screenshots
+> ⚠️ Change or remove this seed account before deploying anywhere beyond local development.
 
+## Screenshots
 
-### 🏠 Homepage
-![Homepage — landing page showing featured products and navigation](screenshots/Homepage.png)
-*Landing page with navigation, hero banner, and a "Shop Now" call-to-action.*
+| Homepage | Products |
+|---|---|
+| ![Homepage](screenshots/Homepage.png) | ![Products](screenshots/Products%20page.png) |
 
-### 🔑 Login Page
-![Login page — user authentication form](screenshots/Login_page.png)
-*Secure login form for registered users, with a link to register.*
+| Login | Register |
+|---|---|
+| ![Login](screenshots/Login%20page.png) | ![Register](screenshots/Register%20page.png) |
 
-### 📦 Orders Page
-![Orders page — order history and status](screenshots/Orders_page.png)
-*Customer order history showing product, price, quantity, total, and shipment status.*
+| Cart | Wishlist |
+|---|---|
+| ![Cart](screenshots/Cart%20page.png) | ![Wishlist](screenshots/Wishlist%20page.png) |
 
-### 📊 Admin Dashboard
-![Admin dashboard — statistics and management overview](screenshots/Admin_dashboard.png)
-*Admin dashboard with total users, products, and orders, plus quick actions.*
+| Admin Dashboard | Orders |
+|---|---|
+| ![Admin Dashboard](screenshots/Admin%20dashboard.png) | ![Orders](screenshots/Orders%20page.png) |
 
+## Roadmap
 
----
-
-## 🎯 Results
-
-ShopSphere delivers a working, end-to-end e-commerce flow — from product discovery to order placement and invoicing — with a separate, secure admin panel for full catalog and order management, all built on a lightweight PHP + MySQL stack without any external frameworks.
-
----
-
-## 🔮 Future Improvements
-
-- [ ] Razorpay payment gateway integration
-- [ ] Email notifications
-- [ ] Forgot password functionality
-- [ ] PDF invoice download
+- [ ] Online payment gateway integration (Razorpay / Stripe)
+- [ ] Email notifications (order confirmation, status updates)
+- [ ] Forgot password / password reset flow
+- [ ] Downloadable PDF invoices
 - [ ] Sales analytics dashboard
 - [ ] Product recommendations
 - [ ] Live deployment
 
----
-
-## 📚 Learning Outcomes
-
-This project was a hands-on deep dive into:
-
-- PHP CRUD operations
-- MySQL database design
-- Authentication & session management
-- Password hashing
-- SQL JOIN queries
-- File uploads
-- Shopping cart logic
-- Order management workflows
-- Responsive web design
-- Git & GitHub version control
-
----
-
-## 👨‍💻 Contributors
+## Author
 
 **Sharan Yadav**
 B.Tech, Computer Science Engineering
 
-- GitHub: _(add your GitHub profile link)_
-- LinkedIn: _(add your LinkedIn profile link)_
+- GitHub: _add your profile link_
+- LinkedIn: _add your profile link_
 
----
+## License
 
-## 📄 License
-
-This project is developed for **educational and placement purposes**.
+This project was developed for educational and portfolio purposes.
