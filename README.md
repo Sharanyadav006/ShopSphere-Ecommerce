@@ -152,35 +152,18 @@ The full schema with seed data is provided in [`database/ecommerce_db.sql`](data
    http://localhost/shopsphere/admin/login.php
    ```
 
-## Default Admin Login
-
-A seed admin account is included in the SQL dump:
-
-```
-Email: admin@gmail.com
-```
-
-The password is hashed in the seed data — set your own by inserting a new row into `admins` with a `password_hash()`-generated value, or update the existing row via phpMyAdmin.
-
-> ⚠️ Change or remove this seed account before deploying anywhere beyond local development.
 
 ## Screenshots
 
-| Homepage | Products |
+| Homepage | Login |
 |---|---|
-| ![Homepage](screenshots/Homepage.png) | ![Products](screenshots/Products%20page.png) |
+| ![Homepage](screenshots/Homepage.png) | ![Login](screenshots/Login%20page.png)  |
 
-| Login | Register |
+| Cart | Admin Dashboard |
 |---|---|
-| ![Login](screenshots/Login%20page.png) | ![Register](screenshots/Register%20page.png) |
+| ![Cart](screenshots/Cart%20page.png) |  ![Admin Dashboard](screenshots/Admin%20dashboard.png) |
 
-| Cart | Wishlist |
-|---|---|
-| ![Cart](screenshots/Cart%20page.png) | ![Wishlist](screenshots/Wishlist%20page.png) |
 
-| Admin Dashboard | Orders |
-|---|---|
-| ![Admin Dashboard](screenshots/Admin%20dashboard.png) | ![Orders](screenshots/Orders%20page.png) |
 
 ## Roadmap
 
